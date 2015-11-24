@@ -1,0 +1,43 @@
+var path = require('path');
+var webpack = require('webpack');
+
+module.exports = {
+  devtool: 'eval-source-map',
+  entry: {
+    todo: [
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './index.todo.js'
+    ]
+  },
+  output: {
+    filename: '[name]_bundle.js',
+    path: path.join(__dirname),
+    publicPath: '/public/'
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.scss']
+  },
+  module: {
+    loaders: [
+      { test: /\.(js|jsx)$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+      { test: /\.css$/, loader: 'style-loader!css' },
+      { test: /\.scss$/, loader: 'style-loader!css!sass' },
+      { test: /\.coffee$/, loader: 'coffee-loader' },
+      { test: /\.(coffee\.md|litcoffee)$/, loader: 'coffee-loader?literate' },
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' } // inline base64 URLs for <=8k images, direct URLs for the rest
+    ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify('development')
+      },
+      dev_tools: JSON.stringify(false)
+    })
+  ]
+};

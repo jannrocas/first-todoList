@@ -1,0 +1,31 @@
+.todo_list {
+  width: 700px;
+  margin: 50px auto;
+
+  input {
+    line-height: 32px;
+    padding: 0 5px;
+    width: 100%;
+    font-size: 21px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+  }
+
+  ul {
+    padding-left: 20px;
+    font-size: 21px;
+  }
+  li {
+    list-style-image: url('images/Todo-list-arrow-right.png');
+  }
+  a {
+    color: #dd1144;
+    text-decoration: none;
+    transition: .25s;
+    &:hover {
+      color: cornflowerblue;
+      padding-left: 5px;
+    }
+  }
+}

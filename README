@@ -1,0 +1,14 @@
+
+1. npm install (install modules)
+2. npm start (http://localhost:3000 local server in hot mode)
+3. npm test (execute all tests from ./webpack/test)
+4. npm run watch (watch assets file change and re-compile *_bundle.js)
+5. npm run build (build *_bundle.js with compression, slower!)
+
+This repo consist of:
+- ReactJS (library building ui)
+- Redux (application architecture similar to Flux)
+- Immutable (data cannot be changed once created)
+- Webpack (module bundler)
+- Babel (es6 to es5 compiler)
+- Karma (test runner) + Mocha (test framework) + Chai (assertion) + Sinon (spies, stubs and mocks)
