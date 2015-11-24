@@ -1,5 +1,5 @@
 .idea/
-node_modules/
+#node_modules/
 dist/todo_bundle.js
 npm-debug.log
 app/assets/javascripts/*_bundle.js
