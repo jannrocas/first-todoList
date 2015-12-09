@@ -16,15 +16,15 @@ This repo consist of:
 
 Exercise: Add label and filter feature to the simple todo app. Below is the sample illustration which you can follow or you can create your own.
 
-Todo   [______________] [create label]   done [x] not done [ ]   [filters]
+Todo   [______________] [create label]   done [x] not done [ ]   [label filters]
 
-[_type_your_todo_here_and_press_enter____________________________________]
+[_type_your_todo_here_and_press_enter__________________________________________]
 
-> Wake up early                                                [difficult]
-> Walk with Jake                                                [favorite]
-> Eat vegetables for breakfast                                  [favorite]
-> Go to grocery store                                          [add label]
-> Feed fish and water plants                                   [add label]
+> Wake up early                                                      [difficult]
+> Walk with Jake                                                      [favorite]
+> Eat vegetables for breakfast                                        [favorite]
+> Go to grocery store                                                [add label]
+> Feed fish and water plants                                         [add label]
 
 
 Requirements:
