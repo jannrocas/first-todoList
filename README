@@ -12,3 +12,26 @@ This repo consist of:
 - Webpack (module bundler)
 - Babel (es6 to es5 compiler)
 - Karma (test runner) + Mocha (test framework) + Chai (assertion) + Sinon (spies, stubs and mocks)
+
+
+Exercise: Add label and filter feature to the simple todo app. Below is the sample illustration which you can follow or you can create your own.
+
+Todo   [______________] [create label]   done [x] not done [ ]   [filters]
+
+[_type_your_todo_here_and_press_enter____________________________________]
+
+> Wake up early                                                [difficult]
+> Walk with Jake                                                [favorite]
+> Eat vegetables for breakfast                                  [favorite]
+> Go to grocery store                                          [add label]
+> Feed fish and water plants                                   [add label]
+
+
+Requirements:
+
+1. Able to toggle from "not done" to "done" or other way around when the list is clicked
+2. Able to create labels
+3. Able to add one label for each list
+4. Able to filter lists by label
+5. Able to filter lists by "done" or "not done"
+6. Able to mix applied filters (mix "done" or "not done" with label)
