@@ -1,0 +1,85 @@
+import React, { Component, PropTypes } from 'react'
+var ImmutableRenderMixin = require('react-immutable-render-mixin');
+
+
+import './Todo.scss';
+
+var CreateLabel = React.createClass({
+	displayName: 'AddLabels',
+
+  mixins: [ImmutableRenderMixin],
+
+  getInitialState() {
+    return {};
+  },
+  
+  handleCreateLabel(event) {
+    event.preventDefault();
+    let input = this.refs.label_text;
+
+    if (input.value.length > 0) {
+      this.props.createLabel(input.value);
+      input.value = '';
+    }
+  },
+  
+  render() {
+    return (
+    
+			<form onSubmit={this.handleCreateLabel}>
+          <input ref="label_text" type="text"/>
+          <button type="submit" value="Create label" />
+        </form>
+     
+    )
+  }
+	
+	
+});
+
+var CompletionOptions = React.createClass({
+	displayName: 'Completion',
+
+  mixins: [ImmutableRenderMixin],
+
+  getInitialState() {
+    return {};
+  },
+  
+  render() {
+    return (
+    <span className="completion">
+				<input type="checkbox" value="Not_Done" />
+				<input type="checkbox" value="Done" />
+	 </span>
+    );
+  }
+	
+	
+});
+
+
+
+var Header = React.createClass({
+	displayName: 'Header',
+
+  mixins: [ImmutableRenderMixin],
+
+  getInitialState() {
+    return {};
+  },
+  
+   render() {
+   	//
+   	//
+    return (
+      <div className="header_list">
+			
+			{completionOptions()}
+      </div>
+    );
+  }
+	
+});
+
+module.exports = Header;

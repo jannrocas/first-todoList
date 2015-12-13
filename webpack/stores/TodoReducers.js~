@@ -108,10 +108,12 @@ export const todos = (state=Immutable.fromJS(initiateState.todos), action) => {
 			if ( todo.get('id') === parseInt(action.id) ) {
 				if(todo.get('labelIds').indexOf(parseInt(action.label)) > -1)
 				
-				todo = todo.set('labelIds', todo.get('labelIds').filterNot(lbl => lbl === parseInt(action.label)));
+				//todo = todo.set('labelIds', todo.get('labelIds').filterNot(lbl => lbl === parseInt(action.label)));
+				console.log(todo.get('labelIds'));
+				console.log('wawa');
 			}
 			
-			return todo;
+			//return todo;
 	
 		});
 		

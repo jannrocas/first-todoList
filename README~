@@ -29,9 +29,9 @@ Todo   [______________] [create label]   done [x] not done [ ]   [label filters]
 
 Requirements:
 
-1. Able to toggle from "not done" to "done" or other way around when the list is clicked //done
-2. Able to create labels //done
+1. Able to toggle from "not done" to "done" or other way around when the list is clicked
+2. Able to create labels
 3. Able to add one label for each list
-4. Able to filter lists by label //done
-5. Able to filter lists by "done" or "not done" /done
-6. Able to mix applied filters (mix "done" or "not done" with label)//done
+4. Able to filter lists by label
+5. Able to filter lists by "done" or "not done"
+6. Able to mix applied filters (mix "done" or "not done" with label)

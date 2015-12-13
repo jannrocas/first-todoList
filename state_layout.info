@@ -1,0 +1,35 @@
+state layout-------------
+{
+	todo:{
+		id,
+		text,
+		completed,
+		label: {}
+	},
+	visibilityFilter:{
+		completionFilter,
+		labelFilter
+	},
+	labels: []
+}	
+
+actions------------------
+
+export function createLabel(label){
+	return { type: CREATE_LABEL, label };
+}
+
+export function toggleTodo(index){
+	return { type: TOGGLE_TODO, index};
+}
+
+export function addTodoLabel(index, label){
+	return { type: ADD_TODO_LABEL, index, label }
+}
+
+export function setcompletionFilter(filter){
+	return { type: COMPLETION_FILTER, filter }
+}
+
+export function setLabelFilter(filter){
+	return { type: LABEL_FILTER, filter }

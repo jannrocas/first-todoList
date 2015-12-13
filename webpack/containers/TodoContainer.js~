@@ -94,7 +94,7 @@ var TodoContainer = React.createClass({
     return (
 		<div style={{width: '80%'}}>
 		          
-			<div id="header" style={{textAlign:'center', marginTop:'13em'}}>
+			<div id="header" style={{textAlign:'center', marginTop:'15em'}}>
 				<h1 style={{display:'inline-block', position:'relative' , margin:'0em 0.7em'}}>Todo</h1>
     			<CreateLabel style={{display:'inline-block', position:'relative'}} labels={labels} {...bindActionCreators(TodoActions, dispatch)} />
     		

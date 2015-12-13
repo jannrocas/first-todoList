@@ -48,7 +48,7 @@ export function addTodoLabel(id, label){ //
 }
 
 export function removeTodoLabel(id, label){ //
-	return { type: types.REMOVE_TODO_LABEL, id, label }
+	return { type: types.ADD_TODO_LABEL, id, label }
 }
 
 export function setcompletionFilter(filter){ //

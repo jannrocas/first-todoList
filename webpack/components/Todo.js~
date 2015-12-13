@@ -147,7 +147,7 @@ var Todo = React.createClass({
       <div className="todo_list">
   
         <form onSubmit={this.handleOnSubmit}>
-          <input ref="input_text" type="text" placeholder="Type in todos. . ."/>
+          <input ref="input_text" type="text"/>
         </form>
         <ul>
           {lists}
