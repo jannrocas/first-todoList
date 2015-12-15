@@ -4,37 +4,27 @@ import Immutable from 'immutable';
 
 const { SHOW_ALL } = types.CompletionFilters;
 
-
 const initiateState = {
-	todos:[{
-			id: 123,
-          text: "Help!",
-			completed: false,
-			labelIds: [1]
-	}],
-	/*visibilityFilter:{
+	todos:[//{
+		//	id: 123,
+      //    text: "Help!",
+		//	completed: false,
+	//		labelIds: [1]
+//	}
+],
+	visibilityFilter:{
 		completionFilter: SHOW_ALL,
-		labelFilter: ''
-	},*/
+		labelFilter: "All"
+	},
 	labels: [{name: 'All',
-				color: 'green'},
-				{name: 'Work',
-				color: 'red'}]
+				color: 'green'}
+				//{name: 'Work',
+				//color: 'red'}
+			]
 };
-/*
-export function visibilityFilter(state = Immutable.fromJS(initiateState.visibilityFilter), action) {
-  switch (action.type) {
-    case types.COMPLETION_FILTER:
-    	return state.set('completionFilter', action.filter);
-    case types.LABEL_FILTER:
-    	return state.set('labelFilter', action.filter);
-    default:
-      return state
-  }
-}
-*/
+
 export function labels(state=Immutable.fromJS(initiateState.labels), action){
-	
+
 	switch(action.type){
 		case types.CREATE_LABEL:
 			let duplicateFlag = false;
@@ -51,11 +41,22 @@ export function labels(state=Immutable.fromJS(initiateState.labels), action){
 		  			}
 				));
 			}
-			
+
 		  return state;
 		default:
-			return state;	
+			return state;
 	}
+}
+
+export function visibilityFilter(state = Immutable.fromJS(initiateState.visibilityFilter), action) {
+  switch (action.type) {
+    case types.COMPLETION_FILTER:
+    	return state.set('completionFilter', action.filter);
+    case types.LABEL_FILTER:
+    	return state.set('labelFilter', action.filter);
+    default:
+      return state
+  }
 }
 
 
@@ -83,13 +84,13 @@ export const todos = (state=Immutable.fromJS(initiateState.todos), action) => {
 
     case types.TOGGLE_TODO:
 		return state.map(todo => {
-			if ( todo.get('id') === action.id ) {
+			if ( todo.get('id') === parseInt(action.id) ) {
 				todo = todo.set('completed', !todo.get('completed'));
 			}
 			return todo;
-	
+
 		});
-		
+
 	case types.ADD_TODO_LABEL:
 		return state.map(todo => {
 			if ( todo.get('id') === parseInt(action.id) ) {
@@ -97,25 +98,23 @@ export const todos = (state=Immutable.fromJS(initiateState.todos), action) => {
 				todo = todo.set('labelIds', todo.get('labelIds').push(parseInt(action.label)));
 			}
 			return todo;
-	
+
 		});
-		
+
 	case types.REMOVE_TODO_LABEL:
 		return state.map(todo => {
-				console.log(action.label);
-				console.log(action.id);
-				
+
 			if ( todo.get('id') === parseInt(action.id) ) {
 				if(todo.get('labelIds').indexOf(parseInt(action.label)) > -1)
-				
+
 				todo = todo.set('labelIds', todo.get('labelIds').filterNot(lbl => lbl === parseInt(action.label)));
 			}
-			
+
 			return todo;
-	
+
 		});
-		
-		
+
+
 
     default:
       return state;

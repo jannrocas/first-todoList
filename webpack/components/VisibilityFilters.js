@@ -15,38 +15,38 @@ var VisibilityFilters = React.createClass({
   getInitialState() {
     return {};
   },
-  
+
   handleCompletion(){
-  	
+
 	let notDone = this.refs.notDone.checked;
 	let done = this.refs.done.checked;
 	if (done) {
 		if (notDone) {this.props.handleCompletion(CompletionFilters.SHOW_ALL);}
 		else {this.props.handleCompletion(CompletionFilters.SHOW_COMPLETED);}
-	} 
+	}
 	else{
 		if (notDone) {this.props.handleCompletion(CompletionFilters.SHOW_ACTIVE);}
 		else {this.props.handleCompletion(CompletionFilters.SHOW_NONE);}
 	}
   },
-  
+
   handleLabelChange(){
   		let selectedLabel = this.refs.lbl.value;
-  		
+
   		this.props.handleLabel(selectedLabel);
-  		
+
   },
-  
+
   render() {
-	const { labels } = this.props; 	
+	const { labels } = this.props;
   	let allLabels = [];
-  	
+
    labels.forEach(label => {
-  		return (					  						
-  			allLabels.push(<option>{label.get('name')}</option>)
+  		return (
+  			allLabels.push(<option key={label.get('name')} >{label.get('name')}</option>)
   		)
 	});
-  	
+
     return (
     	<span style={{width:'30em', margin:'0em 1em'}}>
 			<span style={{display:'inline-block', position:'relative', margin:'0em 1em'}}>
@@ -63,8 +63,8 @@ var VisibilityFilters = React.createClass({
       </span>
     )
   }
-	
-	
+
+
 });
 
 module.exports = VisibilityFilters;

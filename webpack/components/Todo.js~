@@ -67,7 +67,7 @@ var TodoLabelForm = React.createClass({
 		
 		return(
 		<span>
-			<a href="" onClick={this.handleFormVisibility}> + </a>
+			<span className="button-circle" style={{backgroundColor: todoFormVisibility? "#F75E3E": ""}} onClick={this.handleFormVisibility}>{todoFormVisibility? "-": "+"}</span>
 			<form onSubmit={this.handleOnAddLabel} style={{display: todoFormVisibility? "inline-block": "none", float:'right'}} >
 				<input ref="selectedTodoAddLabelID" value={todoID} style={{display:"none"}}/>          	
           	<select ref="selectedAddLabel">
@@ -118,7 +118,7 @@ var Todo = React.createClass({
     	if (todo.get('labelIds')) {
     	todo.get('labelIds').forEach(label => {
     		
-    		listLabel.push(<span key={label} className="todoLabel">{labels.get(label).get('name')}<span id={label+'_'+todo.get('id')} className="todoLabelDelete" onClick={this.handleTodoLabelDelete}>--</span></span>);
+    		listLabel.push(<span key={label} className="todoLabel">{labels.get(label).get('name')}<span id={label+'_'+todo.get('id')} className="todoLabelDelete" onClick={this.handleTodoLabelDelete}>-</span></span>);
     		});
     	}
       lists.push(
@@ -147,7 +147,7 @@ var Todo = React.createClass({
       <div className="todo_list">
   
         <form onSubmit={this.handleOnSubmit}>
-          <input ref="input_text" type="text"/>
+          <input ref="input_text" type="text" placeholder="Type in todos. . ."/>
         </form>
         <ul>
           {lists}
