@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import * as TodoReducers from '../../stores/TodoReducers';
 import * as types from '../../constants/TodoConstants';
 import Immutable from 'immutable';
+import util from 'util';
 
 describe('todos reducer', () => {
   it('should return the initial state', () => {
@@ -23,37 +24,27 @@ describe('todos reducer', () => {
         }
      ]);
   });
-
- /* it('should handle toggle Todo', () => {
-     expect(
-       TodoReducers.todos(Immutable.fromJS([{ id: 1, text: 'Buy this' , completed: false, labelIds: []}]), {
-          type: types.TOGGLE_TODO,
-
-       })
-     );
-
- });
   it('should handle add todo', () => {
     expect(
       TodoReducers.todos(undefined, {
         type: types.ADD_TODO,
         id: 1, text: 'Buy this'
       }).toJS()
-    ).to.equal([
+   ).to.deep.equal([
       { id: 1, text: 'Buy this' , completed: false, labelIds: []}
     ]);
+
 
     expect(
       TodoReducers.todos(Immutable.fromJS([{ id: 1, text: 'Buy this' , completed: false, labelIds: []}]), {
         type: types.ADD_TODO,
         id: 2, text: 'Buy that'
       }).toJS()
-    ).to.equal([
+   ).to.deep.equal([
         { id: 1, text: 'Buy this' , completed: false, labelIds: []},
         { id: 2, text: 'Buy that' , completed: false, labelIds: []}
     ]);
   });
-  */
 });
 
 describe('labels reducer', () => {
@@ -108,7 +99,7 @@ describe('labels reducer', () => {
              completed: false,
              labelIds: [1]
          }
-      ])
+      ]);
    });
 
    it('should handle adding duplicate todo label', () => {
@@ -125,11 +116,42 @@ describe('labels reducer', () => {
              completed: false,
              labelIds: [1,2]
          }
-      ])
+      ]);
    });
 
 });
 
-describe('labels reducer', () => {
+
+describe('visibilityFilter reducer', () => {
+   it('should handle visibility by completion', () => {
+      expect(
+         TodoReducers.visibilityFilter(Immutable.fromJS({
+      		completionFilter: types.CompletionFilters.SHOW_ALL,
+      		labelFilter: "All"
+      	}), {
+            type: types.COMPLETION_FILTER,
+            filter: types.CompletionFilters.SHOW_ACTIVE
+            }).toJS()
+      ).to.deep.equal(
+         {
+      		completionFilter: types.CompletionFilters.SHOW_ACTIVE,
+      		labelFilter: "All"
+      	});
+   });
+
+   it('should handle visibility by label', () => {
+      expect(
+         TodoReducers.visibilityFilter(Immutable.fromJS({
+      		completionFilter: types.CompletionFilters.SHOW_ACTIVE,
+      		labelFilter: "All"
+      	}), {
+            type: types.LABEL_FILTER,
+            filter: 'Work'
+         }).toJS()
+      ).to.deep.equal({
+         completionFilter: types.CompletionFilters.SHOW_ACTIVE,
+         labelFilter: "Work"
+      });
+   });
 
 });

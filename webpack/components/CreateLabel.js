@@ -12,7 +12,7 @@ var CreateLabel = React.createClass({
   getInitialState() {
     return {};
   },
-  
+
   handleCreateLabel(event) {
     event.preventDefault();
     let input = this.refs.label_text;
@@ -22,10 +22,10 @@ var CreateLabel = React.createClass({
       input.value = '';
     }
   },
-  
+
   render() {
     return (
-    	<span style={{display:'inline-block', position:'relative'}}>
+    	<span className='create_label' style={{display:'inline-block', position:'relative'}}>
 			<form onSubmit={this.handleCreateLabel}>
           <input ref="label_text" type="text" placeholder="Create new label"/>
           <button type="submit">Create Label </button>
@@ -33,8 +33,8 @@ var CreateLabel = React.createClass({
       </span>
     )
   }
-	
-	
+
+
 });
 
 module.exports = CreateLabel;

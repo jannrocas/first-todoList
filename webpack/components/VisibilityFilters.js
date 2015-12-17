@@ -50,9 +50,9 @@ var VisibilityFilters = React.createClass({
     return (
     	<span style={{width:'30em', margin:'0em 1em'}}>
 			<span style={{display:'inline-block', position:'relative', margin:'0em 1em'}}>
-				<form action="">
-					<label><input type="checkbox" defaultChecked={true} onClick={this.handleCompletion} ref="notDone"/>Not Done</label>
-					<label><input type="checkbox" defaultChecked={true} onClick={this.handleCompletion} ref="done"/>Done</label>
+				<form onClick={this.handleCompletion}>
+					<label><input type="checkbox" defaultChecked={true} ref="notDone"/>Not Done</label>
+					<label><input type="checkbox" defaultChecked={true} ref="done"/>Done</label>
 				</form>
 			</span>
 			<span style={{display:'inline-block', position:'relative'}}>

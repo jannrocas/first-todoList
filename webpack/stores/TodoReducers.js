@@ -5,21 +5,13 @@ import Immutable from 'immutable';
 const { SHOW_ALL } = types.CompletionFilters;
 
 const initiateState = {
-	todos:[//{
-		//	id: 123,
-      //    text: "Help!",
-		//	completed: false,
-	//		labelIds: [1]
-//	}
-],
+	todos:[],
 	visibilityFilter:{
 		completionFilter: SHOW_ALL,
 		labelFilter: "All"
 	},
 	labels: [{name: 'All',
 				color: 'green'}
-				//{name: 'Work',
-				//color: 'red'}
 			]
 };
 

@@ -2,12 +2,10 @@ import React, { PropTypes, Component } from 'react';
 var ImmutableRenderMixin = require('react-immutable-render-mixin');
 import { connect } from 'react-redux';
 import { CompletionFilters } from '../constants/TodoConstants';
-import TodoLabelForm from './TodoLabelForm';
-
 
 import './Todo.scss';
 import cat_image from './images/Todo-cat.jpg';
-/*
+
 var TodoLabelForm = React.createClass({
 	displayName: 'LabelForm',
 
@@ -76,87 +74,3 @@ var TodoLabelForm = React.createClass({
 	}
 
 });
-*/
-var Todo = React.createClass({
-  displayName: 'Todo',
-
-  mixins: [ImmutableRenderMixin],
-
-  getInitialState() {
-    return {};
-  },
-
-  handleOnSubmit(event) {
-    event.preventDefault();
-    let input = this.refs.input_text;
-
-    if (input.value.length > 0) {
-      this.props.addTodo(input.value);
-      input.value = '';
-    }
-  },
-
-  handleTodoLabelDelete: function (e) {
-  		let labelID = e.target.id.split('_');
-  		this.props.removeTodoLabel(labelID[1], labelID[0]);
-  },
-
-  handleToggleTodo: function (e){
-	  let todoID = e.target.id;
-	  console.log(todoID);
-	  this.props.toggleTodo(todoID);
-  },
-
-  render() {
-    const { todos, labels } = this.props;
-
-
-    let lists = [];
-    let listLabel = [];
-
-    	if(todos != null){
-     todos.forEach(todo => {
-
-    	if (todo.get('labelIds')) {
-    	todo.get('labelIds').forEach(label => {
-
-    		listLabel.push(<span key={label} className="todoLabel">{labels.get(label).get('name')}<span id={label+'_'+todo.get('id')} className="todoLabelDelete" onClick={this.handleTodoLabelDelete}>-</span></span>);
-    		});
-    	}
-      lists.push(
-        <li key={todo.get('id')}>
-          <span id={todo.get('id')}
-				//onClick={this.props.toggleTodo.bind(this, todo.get('id'))}
-				onClick={this.handleToggleTodo}
-				style={{
-		  			textDecoration: todo.get('completed') ? 'line-through' : 'none',
-		  			cursor: todo.get('completed') ? 'default' : 'pointer'
-				}}
-			>
-					{todo.get('text')}
-			</span>
-			<span style={{float:'right', fontSize:'0.57em'}}>
-				{listLabel}
-				<TodoLabelForm todoID={todo.get('id')} labels={labels} onAddLabel={this.props.addTodoLabel}/>
-			</span>
-
-        </li>
-      );
-      listLabel = [];
-    });
-   }
-
-    return (
-      <div className="todo_list">
-        <form className='form_add_todo' onSubmit={this.handleOnSubmit}>
-          <input ref="input_text" type="text" placeholder="Type in todos. . ."/>
-        </form>
-        <ul className="list_of_todo">
-          {lists}
-        </ul>
-   	</div>
-    );
-  }
-});
-
-module.exports = Todo;
